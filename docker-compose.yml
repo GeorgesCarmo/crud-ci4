@@ -1,0 +1,17 @@
+services:
+  db:
+    image: mysql:8.0 # Uma escolha sólida, alternativa ao MySQL
+    container_name: ci4_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: produtos_db
+      MYSQL_USER: admin           # O nome de usuário para a aplicação
+      MYSQL_PASSWORD: admin
+    ports:
+      - "3306:3306" # Mapeia a porta 3306 da sua máquina para o container
+    volumes:
+      - db_data:/var/lib/mysql # Persiste os dados]
+
+volumes:
+  db_data:
